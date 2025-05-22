@@ -11,6 +11,9 @@
     <!-- Favicon and Custom Stylesheet -->
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/map.css') }}">
+    <!-- Leaflet.markercluster CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/MarkerCluster.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lib/MarkerCluster.Default.css') }}" />
     <style>
         /* Media query for smaller screens */
             @media (max-width: 600px) {
@@ -47,6 +50,8 @@
     <!-- Leaflet.Locate JavaScript from jsDelivr -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+    <!-- Leaflet.markercluster JavaScript -->
+    <script src="{{ url_for('static', filename='js/lib/leaflet.markercluster.js') }}"></script>
     <!-- Your Custom JavaScript -->
     <script src="{{ url_for('static', filename='js/pwnamap.js') }}"></script>
 </body>

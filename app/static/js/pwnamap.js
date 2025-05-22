@@ -26,6 +26,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 L.control.locate({ drawCircle: false }).addTo(map);
+var markers = L.markerClusterGroup();
 
 fetch('/api/pwnamap')
   .then((response) => response.json())
@@ -68,7 +69,8 @@ fetch('/api/pwnamap')
         <button onclick="window.open('${geoSchemeURL}', '_blank')">Navigate to</button><button onclick="generateQrCode('${poi.wifiUri}')">Show QR</button><br>
       `;
 
-      marker.addTo(map).bindPopup(popupContent);
+      marker.bindPopup(popupContent);
+      markers.addLayer(marker);
 
       marker.on("click", function() {
         map.setView([poi.latitude, poi.longitude], 19); // Center and zoom in on click
@@ -119,5 +121,6 @@ fetch('/api/pwnamap')
       });
 
     });
+    map.addLayer(markers);
   })
   .catch((error) => console.error("Error fetching data:", error));
